@@ -7,7 +7,7 @@ from flask import request, jsonify, Blueprint, current_app
 auth_blueprint = Blueprint('auth', __name__)
 
 # Rota de autenticação
-@auth_blueprint.route('login', methods=['POST'])
+@auth_blueprint.route('/login', methods=['POST'])
 def login():
     # Pega o payload em json
     auth_data = request.get_json()
@@ -28,7 +28,7 @@ def login():
     
     return jsonify({'message': 'Invalid username or passowrd.'}), 401
 
-def token_required():
+def token_required(f):
     
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -52,4 +52,4 @@ def token_required():
         
         return f(current_user, *args, **kwargs)
     
-    return decorated()
+    return decorated

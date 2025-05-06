@@ -1,3 +1,8 @@
+# flask db init >> inicializa o banco de dados
+# flask db migrate >> verifica se teve alteração no banco de dados
+# flask db upgrade >> aplica as alterações no banco de dados
+# flask run >> roda a aplicação
+
 from app import create_app, data_base
 from app.models import Client
 
